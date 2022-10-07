@@ -22,13 +22,13 @@ RSpec.describe Queen, type: :model do
     expect(queen.kind).to be 4
   end 
 
-  it "can attack {x: 3, y: 2} and {x: 6, y: 5}" do
+  it "can attack {x: 3, y: 2}, {x: 6, y: 5} and [{x:1, y:2},{x:5, y:5}]" do
     other_pieces = [{x:1, y:2},{x:5, y:5}]
     queen = FactoryBot.create(:queen)
     expect(queen.can_attack_with_other_pieces?({x: 3, y: 2},{x: 6, y: 5},other_pieces)).to be true
   end
 
-  it "can not attack {x: 3, y: 2} and {x: 6, y: 5}" do
+  it "can not attack {x: 3, y: 2}, {x: 6, y: 5} and [{x:1, y:2},{x:5, y:4}]" do
     other_pieces = [{x:1, y:2},{x:5, y:4}]
     queen = FactoryBot.create(:queen)
     expect(queen.can_attack_with_other_pieces?({x: 3, y: 2},{x: 6, y: 5},other_pieces)).to be false
